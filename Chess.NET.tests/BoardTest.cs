@@ -1,20 +1,37 @@
 using NUnit.Framework;
 using Chess.NET.Model;
+using BenchmarkDotNet.Attributes;
 
 [TestFixture]
-public class BoardTest{
-  
-  public ChessBoard TestBoard {get;set;}
+public class BoardTest
+{
 
-  [SetUp]
-  public void SetupTests(){
-    TestBoard = new ChessBoard();
-  }
+    public ChessBoard? TestBoard { get; set; }
 
-  [Test]
-  public void TestBlackPawnSetup(){
-    for(int i = 0; i < 9; i++){
-    Assert.IsTrue(TestBoard.Positions[0,i].Piece.Color == PieceColor.Black);
+    [GlobalSetup]
+    [SetUp]
+    public void SetupTests()
+    {
+        TestBoard = new ChessBoard();
     }
-  }
+
+    [Benchmark]
+    [Test]
+    public void TestBlackPawnSetup()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            Assert.IsTrue(TestBoard.Positions[1, i].Piece.Color == PieceColor.Black);
+        }
+    }
+
+    [Benchmark]
+    [Test]
+    public void TestWhitePawnSetup()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            Assert.IsTrue(TestBoard.Positions[6, i].Piece.Color == PieceColor.White);
+        }
+    }
 }
