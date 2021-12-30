@@ -17,16 +17,38 @@ namespace Chess.NET.Units
             {
                 if (startRow == 6)
                 {
+                    if (startCol == 0)
+                    {
+                        return new (int, int)[] { (startRow - 1, startCol), (startRow - 2, startCol),
+                                              (startRow -1, startCol + 1)};
+                    }
+                    else if (startCol == 7)
+                    {
+                        return new (int, int)[] { (startRow - 1, startCol), (startRow - 2, startCol),
+                                              (startRow -1, startCol - 1) };
+                    }
                     return new (int, int)[] { (startRow - 1, startCol), (startRow - 2, startCol),
                                               (startRow -1, startCol + 1), (startRow -1, startCol - 1) };
                 }
-                else {
-                    if(startRow != 0){
-                        return new (int, int)[] { (startRow - 1, startCol) 
+                else
+                {
+                    if (startRow != 0)
+                    {
+                        if (startCol == 0)
+                        {
+                            return new (int, int)[] { (startRow - 1, startCol),(startRow -1, startCol + 1)};
+                        }
+                        else if (startCol == 7)
+                        {
+                            return new (int, int)[] { (startRow - 1, startCol),(startRow -1, startCol - 1)};
+                        }
+                        return new (int, int)[] { (startRow - 1, startCol)
                                                   ,(startRow -1, startCol + 1), (startRow -1, startCol - 1)};
+                        
                     }
                     //Cannot move any further
-                    else {
+                    else
+                    {
                         return new (int, int)[0];
                     }
                 }
@@ -35,16 +57,37 @@ namespace Chess.NET.Units
             {
                 if (startRow == 1)
                 {
+                    if (startCol == 0)
+                    {
+                        return new (int, int)[] { (startRow + 1, startCol), (startRow + 2, startCol),
+                                              (startRow + 1, startCol + 1)};
+                    }
+                    else if (startCol == 7)
+                    {
+                        return new (int, int)[] { (startRow + 1, startCol), (startRow + 2, startCol),
+                                              (startRow + 1, startCol - 1) };
+                    }
                     return new (int, int)[] { (startRow + 1, startCol), (startRow + 2, startCol),
                                               (startRow + 1, startCol + 1), (startRow + 1, startCol - 1) };
                 }
-                else {
-                    if(startRow != 7){
-                    return new (int, int)[] { (startRow + 1, startCol)
+                else
+                {
+                    if (startRow != 7)
+                    {
+                        if (startCol == 0)
+                        {
+                            return new (int, int)[] { (startRow + 1, startCol), (startRow + 1, startCol + 1)};
+                        }
+                        else if (startCol == 7)
+                        {
+                            return new (int, int)[] { (startRow + 1, startCol), (startRow + 1, startCol - 1)};
+                        }
+                        return new (int, int)[] { (startRow + 1, startCol)
                                               ,(startRow + 1, startCol + 1), (startRow + 1, startCol - 1) };
                     }
                     //Cannot move any further
-                    else {
+                    else
+                    {
                         return new (int, int)[0];
                     }
                 }

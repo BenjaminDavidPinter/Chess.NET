@@ -4,6 +4,7 @@ using BenchmarkDotNet.Attributes;
 
 namespace Chess.NET.Tests.Board
 {
+    [SimpleJob(3, 10, 10)]
     [TestFixture]
     public class BoardTest
     {
