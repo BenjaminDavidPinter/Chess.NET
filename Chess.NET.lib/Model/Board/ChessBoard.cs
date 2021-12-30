@@ -8,6 +8,13 @@ public class ChessBoard
     public ChessBoard()
     {
         Positions = new BoardSquare[8, 8];
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                Positions[i, j] = new BoardSquare(i, j);
+            }
+        }
         InitPawns();
     }
 
@@ -15,23 +22,15 @@ public class ChessBoard
     {
         for (int i = 0; i < 8; i++)
         {
-            var newSquare = new BoardSquare()
+            Positions[1, i].Piece = new Pawn()
             {
-                Piece = new Pawn()
-                {
-                    Color = PieceColor.Black
-                }
+                Color = PieceColor.Black
             };
-            Positions[1, i] = newSquare;
 
-            newSquare = new BoardSquare()
+            Positions[6, i].Piece = new Pawn()
             {
-                Piece = new Pawn()
-                {
-                    Color = PieceColor.White
-                }
+                Color = PieceColor.White
             };
-            Positions[6, i] = newSquare;
         }
     }
 }
